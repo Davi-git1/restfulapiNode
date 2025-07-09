@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>descricao</h1>
+    <form>
+        <input type="text" name="descricao" id="" placeholder=" Titulo">
+        <input type="text" name="titulo" id="" placeholder=" Descrição">
+        <input type="submit" onclick="adicionarTarefa()" value="Adicionar tarefa">
+        <input type="submit" onclick="excluirTarefa()" value="Excluir tarefa">
+    </form>
+
+</body>
+<script>
+    const API = 'http://localhost:8080/tarefas';
+
+    function adicionarTarefa() {
+        const titulo = document.getElementById('titulo').value;
+        const descricao = document.getElementById('descricao').value;
+        fetch(API,{
+            method: 'POST',
+            headers:{'Content-Type':'application/json'},
+            body: JSON.stringify({ descricao })
+        });
+    }
+</script>
+</html>
